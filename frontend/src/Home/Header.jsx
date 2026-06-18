@@ -1,7 +1,7 @@
 import { useNavigate } from "react-router-dom";
 const Header = () => {
   const navigate = useNavigate();
-  return (
+  return ( 
     <div className="flex font-bold items-center w-full bg-slate-800 h-20">
       <div className="ml-16 rounded-lg flex items-center justify-center w-20 h-10 bg-teal-500 text-white">
         <button onClick={()=>navigate("/")} className="">Home</button>
