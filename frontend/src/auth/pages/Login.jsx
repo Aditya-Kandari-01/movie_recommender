@@ -1,17 +1,25 @@
 import React, { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { Link } from 'react-router-dom'
-
+import { useAuth } from '../hooks/useAuth'
+import Main from "../components/Main"
 
 const Login = () => {
     const [email,setEmail] = useState("")
     const [password,setPassword] = useState("")
     const navigate = useNavigate()
+    
+    // To access the loading,user variables
+    const {loading,handleLogin} = useAuth();
 
     const handleSubmit = async(event) =>{
       event.preventDefault()
-      console.log({email,password})
-  
+      await handleLogin({email,password})
+      navigate("/")
+    }
+
+    if (loading){
+      return  <Main>Loading...</Main>
     }
   
     return (
@@ -20,7 +28,7 @@ const Login = () => {
         <h1 className="text-3xl font-bold text-center text-slate-800 mb-2">
           Login
         </h1>
-
+ 
         <p className="text-center text-slate-500 mb-8">
           Welcome back! Please login to continue.
         </p>

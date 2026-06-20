@@ -6,18 +6,22 @@ import LikedMovies from "./Home/LikedMovies";
 import Header from "./Home/Header";
 import Login from "./auth/pages/Login"
 import Register from "./auth/pages/Register"
+import AuthProvider from "./auth/Services/Context/authContext";
+
 function App() {
   return (
-    <Router>
+    <AuthProvider>
+      <Router>
       <div className="min-h-screen bg-gray-100">
         <Routes>
-          <Route path="/" element={<MovieSearch />} />
+          <Route path="/" element= {<h1>Home page</h1>} />
           <Route path="/liked" element={<LikedMovies />} />
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
         </Routes>
       </div>
     </Router>
+    </AuthProvider>
   );
 }
 
